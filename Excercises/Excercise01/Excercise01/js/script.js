@@ -2,15 +2,16 @@
 Excersise 1
 Jakob Araujo
 **************************************************/
-
+//Circle width
+let cWid = 0;
 //Colours for Circle
 let r1 = 255;
 let g1 = 50;
 let b1 = 0;
+//Square X
+let sX = 1;
 // Colours for Square
-let r2 = 50;
-let g2 = 50;
-let b2 = 50;
+let rectShade = 255;
 //Colours for Triangle
 let r3 = 30;
 let g3 = 20;
@@ -29,18 +30,25 @@ function setup() {
 //
 // Description of draw() goes here.
 function draw() {
+
   //Connect Triangle to mouse
   y1 = mouseY;
   r3 = mouseX;
+  //Connect the Circle's width to the mouse.
+  cWid = mouseX + mouseY;
+  //Have the Squares X co-ordinate steadily increase.
+  sX ++;
+  //Map the shade of the square.
+  rectX = map(sX, 0, width, 20, 60);
   //Ellipse 1
   fill(r1, g1, b1);
   stroke(255, 0, 0);
-  ellipse (69, 69, 69);
+  ellipse (mouseX, mouseY, cWid);
 
   //Rectangle 1
-  fill(r2, g2, b2);
+  fill(rectShade);
   noStroke();
-  rect (100, 50, 70);
+  rect (rectX, 50, 70);
 
   //Triangle
   fill(r3, g3, b3);

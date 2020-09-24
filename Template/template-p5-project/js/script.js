@@ -34,9 +34,13 @@ function draw() {
   covY = random(0, height);
 } else {covY ++}
 
+  //COVID is a red circle.
   fill(255, 0, 0);
   ellipse(covX, covY, 64);
 
   //Player
+  ellipseMode(CENTER);
+  fill(0, 0, 255);
+  ellipse (mouseX, mouseY, 64);
 
 }

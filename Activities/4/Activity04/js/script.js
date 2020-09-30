@@ -31,7 +31,7 @@ function setup() {
 // Description of draw() goes here.
 function draw() {
   background(0);
-
+  //Draw the stars in the background.
   for (let i = 0; i < 1000; i ++){
     starX = random(0, width);
     starY = random(0, height);

@@ -3,13 +3,17 @@ Exercise 2
 Jakob Araujo
 **************************************************/
 
+let covid = {
+  x: 0,
+  y: 0,
+  w: 64,
+  fill:{
+      r: 250,
+      g: 60,
+      b: 60
+    }
+}
 
-//The Y position for COVID
-let covY = 0;
-//The X position for COVID
-let covX = 0;
-//The radius of the COVID circle
-let covW = 64;
 //The radius of the Player circle
 let plW = 64;
 //The X position for the stars
@@ -22,8 +26,8 @@ let starY = 0;
 // Description of setup() goes here.
 function setup() {
   createCanvas(640, 640);
-  covY = random(0, height);
-  covX = random(0, width);
+  covid.y = random(0, height);
+  covid.x = random(0, width);
 }
 
 // draw()
@@ -41,19 +45,19 @@ function draw() {
   noStroke();
   //COVID:
   //Steadily increase COVID'S X postion
-  covX ++;
+  covid.x ++;
   //loops COVID across the screen
-  if(covX > width){
-    covX = 0;
+  if(covid.x > width){
+    covid.x = 0;
   }
   //Randomize the Y position for COVID
-  if(covY > height){
-  covY = random(0, height);
+  if(covid.y > height){
+  covid.y = random(0, height);
 }
 
   //COVID is a red circle.
-  fill(255, 0, 0);
-  ellipse(covX, covY, covW);
+  fill(covid.fill.r, covid.fill.g, covid.fill.b);
+  ellipse(covid.x, covid.y, covid.w);
 
   //Player:
   //Player is a blue circle
@@ -61,9 +65,9 @@ function draw() {
   fill(0, 0, 255);
   ellipse (mouseX, mouseY, plW);
   //Collision between Player and COVID
-  let d = dist(mouseX, mouseY, covX, covY);
+  let d = dist(mouseX, mouseY, covid.x, covid.y);
 
-  if(d < covW + plW){
+  if(d < covid.w + plW){
     noLoop();
   }
 

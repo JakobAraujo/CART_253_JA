@@ -23,6 +23,8 @@ let player = {
   s:5
 }
 
+let backFill = 0;
+
 //The X position for the stars
 let starX = 0;
 //The Y position for the stars
@@ -37,20 +39,27 @@ function setup() {
   covid.x = random(0, width);
 }
 
-// draw()
-//
-// Description of draw() goes here.
 function draw() {
-  background(0);
+  background(covid.w);
+
   //Draw the stars in the background.
-  for (let i = 0; i < 1000; i ++){
+  for (let i = 0; i < 5; i ++){
     starX = random(0, width);
     starY = random(0, height);
-    stroke(255);
-    point(starX, starY);
+    stroke(255, 0, 0);
+    rect(starX, starY, 80);
   }
-  noStroke();
+
+////////////////////////////////
+push();
   //COVID:
+  covid.w = constrain(covid.w, 64, 200);
+  let d1 = dist(player.x, player.y, covid.x, covid.y);
+  if(d1 < 300){
+    covid.w ++;
+  } else {
+    covid.w --;
+  }
   //Steadily increase COVID'S X postion
   covid.x ++;
   //loops COVID across the screen
@@ -63,9 +72,12 @@ function draw() {
 }
 
   //COVID is a red circle.
+  noStroke();
   fill(covid.fill.r, covid.fill.g, covid.fill.b);
   ellipse(covid.x, covid.y, covid.w);
+pop();
 
+/////////////////////////////////////
   //Player:
   //Player movement
   //Left and Right:
@@ -110,12 +122,10 @@ function draw() {
   fill(0, 0, 255);
   ellipse (player.x, player.y, player.w);
 
-
-
   //Collision between Player and COVID
   let d = dist(player.x, player.y, covid.x, covid.y);
 
-  if(d < covid.w + player.w / 2){
+  if(d < covid.w + player.w / 25){
     noLoop();
   }
 

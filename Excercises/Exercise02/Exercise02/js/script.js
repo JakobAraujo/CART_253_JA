@@ -18,8 +18,9 @@ let player = {
   x:0,
   y:0,
   w:64,
-  v:0,
-  s:30
+  vx:0,
+  vy:0,
+  s:5
 }
 
 //The X position for the stars
@@ -67,19 +68,43 @@ function draw() {
 
   //Player:
   //Player movement
-
+  //Left and Right:
   if(keyIsDown(LEFT_ARROW)){
-    player.v = player.s;
+    player.vx = player.s;
   }
   if(keyIsDown(RIGHT_ARROW)){
-    player.v = -player.s;
+    player.vx = -player.s;
   }
 
-  player.x = player.x + player.v;
+  player.x = player.x + player.vx;
+
   //Screen Wrap
-  if(player.x > width){
-    player.x = - width;
+  if(player.x < width){
+    player.x = player.x + width;
   }
+  if(player.x > width){
+    player.x = player.x - width;
+  }
+
+  //Up and Down
+  if(keyIsDown(UP_ARROW)){
+    player.vy = player.s;
+  }
+  if(keyIsDown(DOWN_ARROW)){
+    player.vy = -player.s;
+  }
+
+  player.y = player.y + player.vy;
+
+  //Screen Wrap
+  if(player.y < height){
+    player.y = player.y + height;
+  }
+
+  if(player.y > height){
+    player.y = player.y - height;
+  }
+  //Draw
   //Player is a blue circle
   ellipseMode(CENTER);
   fill(0, 0, 255);

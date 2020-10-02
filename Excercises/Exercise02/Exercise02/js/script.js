@@ -32,7 +32,7 @@ let starY = 0;
 
 
 function preload(){
-  img = loadImage('assets/images/clown.png')
+  img = loadImage('assets/images/clown.png');
 }
 
 function setup() {

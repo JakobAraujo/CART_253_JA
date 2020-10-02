@@ -14,8 +14,14 @@ let covid = {
     }
 }
 
-//The radius of the Player circle
-let plW = 64;
+let player = {
+  x:0,
+  y:0,
+  w:64,
+  v:0,
+  s:30
+}
+
 //The X position for the stars
 let starX = 0;
 //The Y position for the stars
@@ -60,14 +66,31 @@ function draw() {
   ellipse(covid.x, covid.y, covid.w);
 
   //Player:
+  //Player movement
+
+  if(keyIsDown(LEFT_ARROW)){
+    player.v = player.s;
+  }
+  if(keyIsDown(RIGHT_ARROW)){
+    player.v = -player.s;
+  }
+
+  player.x = player.x + player.v;
+  //Screen Wrap
+  if(player.x > width){
+    player.x = - width;
+  }
   //Player is a blue circle
   ellipseMode(CENTER);
   fill(0, 0, 255);
-  ellipse (mouseX, mouseY, plW);
-  //Collision between Player and COVID
-  let d = dist(mouseX, mouseY, covid.x, covid.y);
+  ellipse (player.x, player.y, player.w);
 
-  if(d < covid.w + plW){
+
+
+  //Collision between Player and COVID
+  let d = dist(player.x, player.y, covid.x, covid.y);
+
+  if(d < covid.w + player.w / 2){
     noLoop();
   }
 

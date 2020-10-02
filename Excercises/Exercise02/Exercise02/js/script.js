@@ -30,9 +30,11 @@ let starX = 0;
 //The Y position for the stars
 let starY = 0;
 
-// setup()
-//
-// Description of setup() goes here.
+
+function preload(){
+  img = loadImage('assets/images/kasper.png')
+}
+
 function setup() {
   createCanvas(640, 640);
   covid.y = random(0, height);
@@ -41,7 +43,14 @@ function setup() {
 
 function draw() {
   background(covid.w);
-
+  image(img, 0, 0);
+  push();
+    stroke(0, 255, 0);
+    fill(0, 0, 255);
+    textSize(50);
+    textAlign(CENTER);
+    text('Arrows Keys to move', width / 2, height / 2);
+  pop();
   //Draw the stars in the background.
   for (let i = 0; i < 5; i ++){
     starX = random(0, width);

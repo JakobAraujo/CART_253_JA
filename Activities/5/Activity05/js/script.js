@@ -1,46 +1,51 @@
 /**************************************************
-Activiy 04
+Activiy 05
 Jakob Araujo
 **************************************************/
-
-
-//The Y position for COVID
-let covY = 0;
-//The X position for COVID
-let covX = 0;
-
-// setup()
-//
-// Description of setup() goes here.
-function setup() {
-  createCanvas(640, 640);
-
+let lover1={
+  x: 0,
+  y: 0,
+  w: 69,
+  xv: 0,
+  yv: 0,
+  speed: 5
 }
 
-// draw()
-//
-// Description of draw() goes here.
+let lover2={
+  x: 0,
+  y: 0,
+  w: 69,
+  xv: 0,
+  yv: 0,
+  speed: 5
+}
+
+
+function setup() {
+  createCanvas(1000, 1000);
+  lover1.x = width / 3;
+  lover1.y = height / 2;
+
+  lover2.x = width  / 6;
+  lover2.y = height / 4;
+}
+
 function draw() {
   background(0);
-  //COVID:
-  //Steadily increase COVID'S X postion
-  covX ++;
-  //loops COVID across the screen
-  if(covX > width){
-    covX = 0;
-  }
-  //Randomize the Y position for COVID
-  if(covY > height){
-  covY = random(0, height);
-} else {covY ++}
 
-  //COVID is a red circle.
-  fill(255, 0, 0);
-  ellipse(covX, covY, 64);
+  //Draw lover1
+  push();
+    ellipseMode(CENTER);
+    stroke(50, 255, 0);
+    fill (245, 66, 236);
+    ellipse(lover1.x, lover1.y, lover1.w);
+  pop();
 
-  //Player
-  ellipseMode(CENTER);
-  fill(0, 0, 255);
-  ellipse (mouseX, mouseY, 64);
-
+  //Draw lover2
+  push();
+    ellipseMode(CENTER);
+    stroke(50, 255, 0);
+    fill (245, 66, 236);
+    ellipse(lover2.x, lover2.y, lover2.w);
+  pop();
 }

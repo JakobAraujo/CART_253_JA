@@ -39,27 +39,73 @@ function setup() {
 function draw() {
   background(0);
 
-  lover1.yv = lover1.speed;
-  lover1.y = lover1.y + lover1.yv;
-  lover1.xv = lover1.speed;
-  lover1.x = lover1.x + lover1.xv;
+  move1();
   //Draw lover1
-  push();
-    ellipseMode(CENTER);
-    stroke(50, 255, 0);
-    fill (245, 66, 236);
-    ellipse(lover1.x, lover1.y, lover1.w);
-  pop();
+  display1();
 
-  lover2.yv = lover2.speed;
-  lover2.y = lover2.y + lover2.yv;
-  lover2.xv = lover2.speed;
-  lover2.x = lover2.x + lover2.xv;
+  move2();
   //Draw lover2
-  push();
-    ellipseMode(CENTER);
-    stroke(50, 255, 0);
-    fill (245, 66, 236);
-    ellipse(lover2.x, lover2.y, lover2.w);
-  pop();
+  display2();
+
+
+  //Collision.
+  let d = dist(lover1.w, lover2.w);
+  if(d < lover1.w + lover2.w /2){
+    noLoop();
+  }
+
+  function endScreen(){
+    textAlign();
+    textSize();
+    text();
+  }
+  function edgeDetect(){
+    //Screen wrap
+    if(lover1.x > width) {
+      //text
+    }
+    if(lover1.x < 0){
+      //text
+    }
+
+    if(lover1.y > height){
+      //text
+    }
+
+    if(lover1.y < 0){
+      //text
+    }
+
+  }
+  function display1(){
+    push();
+      ellipseMode(CENTER);
+      stroke(50, 255, 0);
+      fill (245, 66, 236);
+      ellipse(lover1.x, lover1.y, lover1.w);
+    pop();
+  }
+  function display2(){
+    push();
+      ellipseMode(CENTER);
+      stroke(50, 255, 0);
+      fill (245, 66, 236);
+      ellipse(lover2.x, lover2.y, lover2.w);
+    pop();
+
+  }
+  function move1(){
+    //Movement for Lover1
+    lover1.yv = lover1.speed;
+    lover1.y = lover1.y + lover1.yv;
+    lover1.xv = lover1.speed;
+    lover1.x = lover1.x + lover1.xv;
+  }
+  function move2(){
+    //Moverment for Lover2
+    lover2.yv = lover2.speed;
+    lover2.y = lover2.y + lover2.yv;
+    lover2.xv = lover2.speed;
+    lover2.x = lover2.x + lover2.xv;
+  }
 }

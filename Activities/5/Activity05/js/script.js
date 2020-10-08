@@ -48,11 +48,7 @@ function draw() {
   display2();
 
 
-  //Collision.
-  let d = dist(lover1.w, lover2.w);
-  if(d < lover1.w + lover2.w /2){
-    noLoop();
-  }
+
 
   function endScreen(){
     textAlign();
@@ -107,5 +103,11 @@ function draw() {
     lover2.y = lover2.y + lover2.yv;
     lover2.xv = lover2.speed;
     lover2.x = lover2.x + lover2.xv;
+  }
+  function collision(){
+    let d = dist(lover1.w, lover2.w);
+    if(d < lover1.w + lover2.w /2){
+      noLoop();
+    }
   }
 }

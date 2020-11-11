@@ -12,4 +12,28 @@ class Player{
     this.speed = speed;
   }
 
+  playerMove(){
+    if(keyIsDown(RIGHT_ARROW)){ //Move right
+      this.v = this.speed;
+      this.x = this.x + this.v;
+    }
+    if(keyIsDown(LEFT_ARROW)){ //Move left
+      this.v = this.speed;
+      this.x = this.x - this.v;
+    }
+    if(keyIsDown(UP_ARROW)){ //Move up
+      this.v = this.speed;
+      this.y = this.y - this.v;
+    }
+    if(keyIsDown(DOWN_ARROW)){ //Move up
+      this.v = this.speed;
+      this.y = this.y + this.v;
+    }
+  }
+
+  playerDraw() {
+    fill(0);
+    ellipse(this.x, this.y, this.size);
+  }
+
 }
